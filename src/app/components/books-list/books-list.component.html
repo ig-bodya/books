@@ -1,0 +1,27 @@
+<input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+       [(ngModel)]="searchText" placeholder="Enter text to search"
+       autofocus>
+<table class="table-wrapper">
+    <tr class="column-name">
+        <th>Title
+            <button (click)="sortBooksByTitle()">Sort</button>
+        </th>
+        <th>Description</th>
+        <th>Page count
+            <button (click)="sortBooksByPageCount()">Sort</button>
+        </th>
+        <th>Publish date
+            <button (click)="sortBooksByDate()">Sort</button>
+        </th>
+        <th>Excerpt</th>
+    </tr>
+    <tr *ngFor="let book of books| search: searchText" class="book-item">
+        <th>{{book.title}}</th>
+        <th>{{book.description}}</th>
+        <th>{{book.pageCount}}</th>
+        <th>{{book.publishDate}}</th>
+        <th>
+            <button>Show an excerpt</button>
+        </th>
+    </tr>
+</table>
