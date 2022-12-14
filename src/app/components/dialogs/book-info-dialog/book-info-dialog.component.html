@@ -1,7 +1,71 @@
-<div class="book-wrapper">
-    <h1>{{book.title}}</h1>
-    <p>{{book.publishDate}}</p>
-    <p>{{book.pageCount}}</p>
-    <p>{{book.description}}</p>
-    <p>{{book.excerpt}}</p>
+<div class="close-btn-container">
+    <div class="close-btn-wrapper">
+        <mat-icon (click)="close()" class="btn-close">close</mat-icon>
+    </div>
 </div>
+<h1 class="book-title">{{book.title}}</h1>
+<div class="info-container">
+    <div class="info-wrapper">
+        <p class="info-header">Published:</p>
+        <textarea class="book-info"
+                  id="publishDate"
+                  readonly
+                  autofocus="false">{{book.publishDate| date:'yyyy MM dd'}}</textarea>
+    </div>
+    <div class="action-wrapper">
+        <button mat-mini-fab
+                color="primary"
+                (click)="edit('publishDate')">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="info-container">
+    <div class="info-wrapper">
+        <p class="info-header">Page count:</p>
+        <textarea class="book-info"
+                  id="pageCount"
+                  readonly
+                  autofocus="false">{{book.pageCount}}</textarea>
+    </div>
+    <div class="action-wrapper">
+        <button mat-mini-fab
+                color="primary"
+                (click)="edit('pageCount')">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="info-container">
+    <div class="info-wrapper">
+        <p class="info-header">Description:</p>
+        <textarea class="book-info description"
+                  id="description"
+                  readonly
+                  autofocus="false">{{book.description}}</textarea>
+    </div>
+    <div class="action-wrapper">
+        <button mat-mini-fab
+                color="primary"
+                (click)="edit('description')">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="info-container">
+    <div class="info-wrapper">
+        <p class="info-header">Excerpt:</p>
+        <textarea class="book-info excerpt"
+                  id="excerpt"
+                  autofocus="false"
+                  readonly>{{book.excerpt}}</textarea>
+    </div>
+    <div class="action-wrapper">
+        <button mat-mini-fab
+                color="primary"
+                (click)="edit('excerpt')">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+</div>
+

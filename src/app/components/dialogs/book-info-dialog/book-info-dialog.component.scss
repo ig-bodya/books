@@ -1,6 +1,69 @@
-.book-wrapper {
+.close-btn-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  right: 10px;
+  top: 0;
+
+  .close-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1170px;
+
+    .btn-close {
+      color: #fff;
+      cursor: pointer;
+      background-color: #000;
+      border-radius: 50%;
+    }
+  }
+}
+
+.book-title {
+  display: flex;
+  justify-content: center;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #000;
+}
+
+.info-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+
+  .info-header {
+    width: 20%;
+    font-weight: 600;
+  }
+
+  .book-info {
+    width: 75%;
+    outline: none;
+    border: none;
+  }
+
+  .excerpt {
+    height: 250px;
+    width: 95%;
+  }
+
+  .description {
+    height: 150px;
+    width: 95%;
+  }
+
+  .action-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+  }
 }

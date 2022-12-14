@@ -1,31 +1,66 @@
+.action-container {
+  display: flex;
+
+  .list-button {
+    height: 40px;
+    margin: 5px;
+  }
+
+  .search-form {
+    width: 180px;
+    height: 40px;
+  }
+}
+
 .table-wrapper {
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 
-  //tr:nth-child(even) {
-  //  background-color: #ADD8E6;
-  //}
+  .book-item {
+    border-bottom: 1px solid #000000;
+  }
 
   .column-name {
-    background-color: #4169E1;
+    background-color: #3f51b5;
     color: #fff;
 
-    .title-column{
-      width: 20%;
+    .title-column {
+      width: 15%;
     }
 
-    .page-count-column{
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .page-count-column {
       width: 10%;
     }
 
     .publish-date-column {
-
+      width: 10%;
     }
 
-    .content{
-      display: flex;
+    .publish-date-column:hover {
+      background-color: #1E90FF;
+    }
+
+    .title-column:hover {
+      background-color: #1E90FF;
+    }
+
+    .page-count-column:hover {
+      background-color: #1E90FF;
     }
   }
 
-  .book-item {
+  .description-field {
+    max-height: 110px;
+    overflow-y: scroll;
   }
+}
+
+table, th, td {
+  border: 1px solid #000000;
 }

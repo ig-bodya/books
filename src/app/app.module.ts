@@ -11,6 +11,9 @@ import { BookInfoDialogComponent } from './components/dialogs/book-info-dialog/b
 import { MatDialogModule } from "@angular/material/dialog";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { MatIconModule } from "@angular/material/icon";
     FormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

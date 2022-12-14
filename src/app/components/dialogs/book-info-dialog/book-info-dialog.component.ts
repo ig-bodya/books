@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Book } from "../../../models/book";
 
 @Component({
@@ -11,11 +11,22 @@ export class BookInfoDialogComponent implements OnInit {
 
   book: Book;
 
-  constructor( @Inject(MAT_DIALOG_DATA) data: Book) {
+  constructor(private dialogRef: MatDialogRef<BookInfoDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) data: Book) {
     this.book = data;
   }
 
   ngOnInit(): void {
   }
 
+  edit(id: string): void {
+    let elem = document.getElementById(`${id}`) as HTMLInputElement;
+    elem.removeAttribute('readonly');
+    elem.setSelectionRange(elem.value.length, elem.value.length);
+    elem.focus();
+  }
+
+  close(): void {
+    this.dialogRef.close();
+  }
 }

@@ -1,4 +1,12 @@
-*{
+body {
   max-width: 1170px;
   margin: auto;
+}
+
+.book-info-dialog {
+  max-width: 1000px !important;
+  max-height: 100vh !important;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px 25px 0 0;
 }
