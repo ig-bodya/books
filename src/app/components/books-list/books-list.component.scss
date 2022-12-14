@@ -1,13 +1,29 @@
 .table-wrapper {
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 
-  tr:nth-child(even) {
-    background-color: #ADD8E6;
-  }
+  //tr:nth-child(even) {
+  //  background-color: #ADD8E6;
+  //}
 
   .column-name {
     background-color: #4169E1;
     color: #fff;
+
+    .title-column{
+      width: 20%;
+    }
+
+    .page-count-column{
+      width: 10%;
+    }
+
+    .publish-date-column {
+
+    }
+
+    .content{
+      display: flex;
+    }
   }
 
   .book-item {

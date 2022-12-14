@@ -1,27 +1,39 @@
 <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
        [(ngModel)]="searchText" placeholder="Enter text to search"
        autofocus>
-<table class="table-wrapper">
+<button (click)="exportExcel()"> Export EXCEL</button>
+<table class="table-wrapper" id="books">
     <tr class="column-name">
-        <th>Title
-            <button (click)="sortBooksByTitle()">Sort</button>
+        <th class="title-column">
+            <div class="content">
+                <p>Title</p>
+                <mat-icon (click)="sort('title')">sort_by_alpha</mat-icon>
+            </div>
         </th>
         <th>Description</th>
-        <th>Page count
-            <button (click)="sortBooksByPageCount()">Sort</button>
+        <th class="page-count-column">
+            <div class="content">
+                <p>Page count</p>
+                <mat-icon (click)="sort('pageCount')">filter_list</mat-icon>
+            </div>
         </th>
-        <th>Publish date
-            <button (click)="sortBooksByDate()">Sort</button>
+        <th class="publish-date-column">
+            <div class="content">
+                <p>Publish date</p>
+                <mat-icon (click)="sort('publishDate')">filter_list</mat-icon>
+            </div>
         </th>
-        <th>Excerpt</th>
+        <th>Details</th>
     </tr>
-    <tr *ngFor="let book of books| search: searchText" class="book-item">
+    <tr *ngFor="let book of books| search: searchText"
+        class="book-item" (click)="checkBook(book)"
+        [ngStyle]="{'background-color' : book.isClicked ? selectedColor : defaultColor}">
         <th>{{book.title}}</th>
         <th>{{book.description}}</th>
         <th>{{book.pageCount}}</th>
         <th>{{book.publishDate}}</th>
         <th>
-            <button>Show an excerpt</button>
+            <button (click)="openBookInfo(book)">Show more</button>
         </th>
     </tr>
 </table>

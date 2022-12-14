@@ -4,5 +4,6 @@ export interface Book {
   description: string,
   pageCount: number,
   excerpt: string,
-  publishDate: Date
+  publishDate: Date,
+  isClicked?: boolean
 }
