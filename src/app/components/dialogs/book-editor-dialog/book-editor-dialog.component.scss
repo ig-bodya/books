@@ -1,23 +1,16 @@
-.close-btn-container {
+.modal-header {
   display: flex;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  right: 10px;
-  top: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
 
-  .close-btn-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    max-width: 1170px;
+  .modal-header-text {
+    font-size: 24px;
+    font-weight: 600;
+  }
 
-    .btn-close {
-      color: #fff;
-      cursor: pointer;
-      background-color: #000;
-      border-radius: 50%;
-    }
+  .empty {
+    width: 40px;
   }
 }
 
@@ -31,7 +24,19 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-top: 1px solid #000;
+}
+
+.bordered {
+  border-top: 1px solid #00000029;
+}
+
+.book-info {
+  width: 95%;
+  margin-bottom: 16px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  resize: none;
 }
 
 .info-wrapper {
@@ -39,25 +44,25 @@
   flex-direction: column;
   width: 100%;
 
+  .date-picker{
+    width: 30%;
+    outline: none;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
   .info-header {
+    font-size: 20px;
     width: 20%;
     font-weight: 600;
   }
 
-  .book-info {
-    width: 75%;
-    outline: none;
-    border: none;
-  }
-
   .excerpt {
     height: 250px;
-    width: 95%;
   }
 
   .description {
     height: 150px;
-    width: 95%;
   }
 
   .action-wrapper {

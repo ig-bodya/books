@@ -1,9 +1,10 @@
 export interface Book {
-  id: 0,
+  id: number,
   title: string,
   description: string,
   pageCount: number,
   excerpt: string,
   publishDate: Date,
-  isClicked?: boolean
+  isClicked?: boolean,
+  touched?: boolean
 }

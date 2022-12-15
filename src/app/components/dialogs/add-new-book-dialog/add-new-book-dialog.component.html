@@ -1,0 +1,44 @@
+<div class="data-container">
+    <div class="form-container">
+        <mat-form-field appearance="outline" class="input-wrapper" [formGroup]="myForm">
+            <mat-label class="input-label">Title</mat-label>
+            <input matInput formControlName="title" placeholder="Input book title" value="" id="bookTitle" autocomplete="off">
+        </mat-form-field>
+        <div class="validation-wrapper">
+            <span *ngIf="title.invalid && title.touched" class="error-message">Required field</span>
+        </div>
+        <mat-form-field appearance="outline" class="input-wrapper" [formGroup]="myForm">
+            <mat-label class="input-label">Page count</mat-label>
+            <input matInput formControlName="pageCount" onlyNumber placeholder="Input book page count" value="" id="pageCount"
+                   autocomplete="off">
+        </mat-form-field>
+        <div class="validation-wrapper">
+            <span *ngIf="pageCount.invalid && pageCount.touched" class="error-message">Required field</span>
+        </div>
+        <mat-form-field appearance="outline" class="input-wrapper" [formGroup]="myForm">
+            <mat-label class="input-label">Publish date</mat-label>
+            <input matInput formControlName="publishDate" type="date" placeholder="Input book publish date" value="" id="publishDate" autocomplete="off">
+        </mat-form-field>
+        <div class="validation-wrapper">
+            <span *ngIf="publishDate.invalid && publishDate.touched" class="error-message">Required field</span>
+        </div>
+        <mat-form-field appearance="outline" class="input-wrapper" [formGroup]="myForm">
+            <mat-label class="input-label">Description</mat-label>
+            <input matInput formControlName="description" placeholder="Input book description" value="" id="description" autocomplete="off">
+        </mat-form-field>
+        <div class="validation-wrapper">
+            <span *ngIf="description.invalid && description.touched" class="error-message">Required field</span>
+        </div>
+        <mat-form-field appearance="outline" class="input-wrapper" [formGroup]="myForm">
+            <mat-label class="input-label">Excerpt</mat-label>
+            <input matInput formControlName="excerpt" placeholder="Input book excerpt" value="" id="excerpt" autocomplete="off">
+        </mat-form-field>
+    </div>
+    <div class="button-wrapper">
+        <button mat-raised-button
+                color="primary"
+                (click)="send()"
+                class="confirm-button">Save
+        </button>
+    </div>
+</div>

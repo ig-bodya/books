@@ -4,8 +4,9 @@ import { Book } from "../../models/book";
 import * as XLSX from 'xlsx'
 import { MatDialog } from "@angular/material/dialog";
 import { displayBookDialog } from "../../utils/dialog-utils.config";
-import { BookInfoDialogComponent } from "../dialogs/book-info-dialog/book-info-dialog.component";
+import { BookEditorDialogComponent } from "../dialogs/book-editor-dialog/book-editor-dialog.component";
 import { ReplaySubject, scan } from "rxjs";
+import { AddNewBookDialogComponent } from '../dialogs/add-new-book-dialog/add-new-book-dialog.component';
 
 @Component({
   selector: 'app-books-list',
@@ -18,7 +19,7 @@ export class BooksListComponent implements OnInit {
   defaultColor = '#fff'
   books: Book[];
   searchText = '';
-  fileName = 'BooksSheet.xlsx'
+  fileName = 'BooksSheet.xlsx';
   replaySubSource = new ReplaySubject<any>(2);
   replaySub$ = this.replaySubSource.pipe(
     scan((acc: any, curr: any) => {
@@ -34,21 +35,28 @@ export class BooksListComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.getBooksList().subscribe(result => {
       this.books = result;
+      for (let i = 0; i < this.books.length; i++) {
+        this.books[i].publishDate = new Date(this.books[i].publishDate);
+      }
       this.sortBooksByTitle();
-      this.processSorting('title');
+      this.processSorting();
       this.sort('title');
     });
   }
 
-  processSorting(category: string): void {
+  processSorting(): void {
     this.replaySub$.subscribe(val => {
-      if ( val.length === 2 && val[0] === val[1] ) {
-        this.books.reverse();
+      if (val.length === 1) {
+        this.sortBooksByTitle();
       } else {
-        if ( category === 'title' ) {
-          this.sortBooksByTitle();
+        if (val.length === 2 && val[0] === val[1] && val[1] !== '') {
+          this.books.reverse();
         } else {
-          this.books = this.books.sort((a: any, b: any) => ((a[category] > b[category]) ? 1 : -1));
+          if (val[1] === 'title') {
+            this.sortBooksByTitle();
+          } else if (val[1] !== '') {
+            this.books = this.books.sort((a: any, b: any) => ((a[val[1]] > b[val[1]]) ? 1 : -1));
+          }
         }
       }
     })
@@ -59,7 +67,7 @@ export class BooksListComponent implements OnInit {
       a.title.localeCompare(b.title, undefined, {
         numeric: true,
         sensitivity: 'base'
-      })))
+      })));
   }
 
   sort(category: string): void {
@@ -67,7 +75,7 @@ export class BooksListComponent implements OnInit {
   }
 
   checkBook(item: Book): void {
-    if ( item.isClicked ) {
+    if (item.isClicked) {
       item.isClicked = false;
     } else {
       this.uncheckBook();
@@ -86,10 +94,19 @@ export class BooksListComponent implements OnInit {
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet 1');
-    XLSX.writeFile(wb, this.fileName)
+    XLSX.writeFile(wb, this.fileName);
   }
 
   openBookInfo(book: Book): void {
-    this.dialog.open(BookInfoDialogComponent, displayBookDialog(book));
+    this.dialog.open(BookEditorDialogComponent, displayBookDialog(book)).afterClosed().subscribe(() => this.sort(''))
+  }
+
+  addNewBook(): void {
+    this.dialog.open(AddNewBookDialogComponent, displayBookDialog()).afterClosed().subscribe(res => {
+      if (res) {
+        res.publishDate = new Date(res.publishDate);
+        this.books.push(res);
+      }
+    });
   }
 }

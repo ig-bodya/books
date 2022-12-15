@@ -1,0 +1,84 @@
+<div class="modal-header">
+    <div class="empty"></div>
+    <p class="modal-header-text">Book editor</p>
+    <button mat-mini-fab
+            color="primary"
+            (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div class="info-container bordered">
+    <div class="info-wrapper">
+        <p class="info-header">Title:</p>
+        <textarea class="book-info"
+                  id="title"
+                  readonly>{{book.title}}</textarea>
+    </div>
+    <button mat-mini-fab
+            color="primary"
+            (click)=" editing? save('title', 'editTitle'): edit('title', 'editTitle')">
+        <mat-icon id="editTitle">edit</mat-icon>
+    </button>
+</div>
+<div class="info-container bordered">
+    <div class="info-wrapper">
+        <p class="info-header">Published:</p>
+        <input class="date-picker" type="date" id="publishDate" readonly autofocus="false" value="{{this.formatDate(book.publishDate)}}" >
+    </div>
+    <div class="action-wrapper">
+        <button mat-mini-fab
+                color="primary"
+                (click)=" editing? save('publishDate', 'editPublishDate'): edit('publishDate', 'editPublishDate')">
+            <mat-icon id="editPublishDate">edit</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="info-container bordered">
+    <div class="info-wrapper">
+        <p class="info-header">Page count:</p>
+        <textarea class="book-info"
+                  id="pageCount"
+                  readonly
+                  autofocus="false">{{book.pageCount}}</textarea>
+    </div>
+    <div class="action-wrapper">
+        <button mat-mini-fab
+                color="primary"
+                (click)=" editing? save('pageCount', 'editPageCount'): edit('pageCount', 'editPageCount')">
+            <mat-icon id="editPageCount">edit</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="info-container bordered">
+    <div class="info-wrapper">
+        <p class="info-header">Description:</p>
+        <textarea class="book-info description"
+                  id="description"
+                  readonly
+                  autofocus="false">{{book.description}}</textarea>
+    </div>
+    <div class="action-wrapper">
+        <button mat-mini-fab
+                color="primary"
+                (click)=" editing? save('description', 'editDescription'): edit('description', 'editDescription')">
+            <mat-icon id="editDescription">edit</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="info-container bordered">
+    <div class="info-wrapper">
+        <p class="info-header">Excerpt:</p>
+        <textarea class="book-info excerpt"
+                  id="excerpt"
+                  autofocus="false"
+                  readonly>{{book.excerpt}}</textarea>
+    </div>
+    <div class="action-wrapper">
+        <button mat-mini-fab
+                color="primary"
+                (click)=" editing? save('excerpt', 'editExcerpt'): edit('excerpt', 'editExcerpt')">
+            <mat-icon id="editExcerpt">edit</mat-icon>
+        </button>
+    </div>
+</div>
+

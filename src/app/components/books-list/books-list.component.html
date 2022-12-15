@@ -1,7 +1,7 @@
 <div class="action-container">
     <form class="search-form">
         <mat-form-field>
-            <mat-label>Find your book</mat-label>
+            <mat-label>Search</mat-label>
             <input matInput type="email"
                    id="search-text"
                    aria-describedby="search-text"
@@ -11,6 +11,7 @@
     </form>
     <button mat-raised-button
             color="primary"
+            (click)="addNewBook()"
             class="list-button">Add new book
     </button>
     <button mat-raised-button
@@ -40,7 +41,7 @@
                 <mat-icon class="sort-icon">sort</mat-icon>
             </div>
         </th>
-        <th>Details</th>
+        <th>Edit</th>
     </tr>
     <tr *ngFor="let book of books| search: searchText"
         (click)="checkBook(book)"
@@ -50,7 +51,7 @@
             <div class="description-field">{{book.description}}</div>
         </th>
         <th>{{book.pageCount}}</th>
-        <th>{{book.publishDate| date:'yyyy MM dd'}}</th>
+        <th>{{book.publishDate| date:'yyyy-MM-dd'}}</th>
         <th>
             <button mat-mini-fab
                     color="primary"
